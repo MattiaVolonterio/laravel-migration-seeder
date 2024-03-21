@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('trains', function (Blueprint $table) {
             $table->id();
-            $table->enum('company', ['Trenitalia', 'Italo', 'SNCF', 'Deutsche Bahn', 'SBB', 'WestBehn']);
+            $table->string('company', 100);
             $table->string('departure_station', 100);
             $table->string('arrival_station', 100);
             $table->dateTime('departure_time');
             $table->dateTime('arrival_time');
             $table->string('train_code', 20);
             $table->unsignedTinyInteger('number_of_carriages');
-            $table->boolean('in_time')->nullable();
+            $table->boolean('in_time')->default(true);
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('trains', function (Blueprint $table) {
-            $table->boolean('deleted')->nullable()->after('in_time');
+            $table->boolean('deleted')->default(false)->after('in_time');
         });
     }
 

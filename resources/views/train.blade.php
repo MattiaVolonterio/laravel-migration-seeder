@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($trains as $train)
+                @forelse ($trains as $train)
                     <tr>
                         <th scope="row">{{ $train->id }}</th>
                         <td>{{ $train->company }}</td>
@@ -31,21 +31,25 @@
                         <td>{{ $train->train_code }}</td>
                         <td>{{ $train->number_of_carriages }}</td>
                         <td>
-                            @if ($train->in_time == null)
-                                -
-                            @else
+                            @if ($train->in_time)
                                 Si
+                            @else
+                                No
                             @endif
                         </td>
                         <td>
-                            @if ($train->deleted == null)
-                                -
-                            @else
+                            @if ($train->deleted)
                                 Si
+                            @else
+                                No
                             @endif
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="100%">Nessun risultato trovato</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
