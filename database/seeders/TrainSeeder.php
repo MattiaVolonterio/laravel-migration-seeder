@@ -17,12 +17,12 @@ class TrainSeeder extends Seeder
     public function run()
     {
         $file = fopen(__DIR__ . '/../csv/trains.csv', "r");
-        $train_data = fgetcsv($file);
+
         $is_first_line = true;
 
         while (!feof($file)) {
+            $train_data = fgetcsv($file);
             if (!$is_first_line) {
-                $train_data = fgetcsv($file);
                 $train = new Train;
                 $train->company = $train_data[0];
                 $train->departure_station = $train_data[1];
